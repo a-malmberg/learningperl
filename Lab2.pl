@@ -18,3 +18,29 @@
 #	Correct answer is b 
 #	b.	1.08(100*x) + 5    correct answer 		(1)
 
+
+#9
+use strict;
+use warnings;
+use 5.010;
+
+say "Enter number of years: ";
+my $no_yrs = <STDIN>;
+chomp $no_yrs;
+
+say "The number of seconds in $no_yrs year(s) is approximately: " . $no_yrs*365*24*60*60;
+
+#10
+say "Enter total number of minutes: ";
+my $minutes = <STDIN>;
+chomp $minutes;
+
+say "Phone charges for $minutes minutes: " . (30+($minutes-300)*0.45);
+ 
+ #11
+ say "Enter number of nights: ";
+ my $nights = <STDIN>;
+ chomp $nights;
+ 
+ say "Total for hotel stay: " . (5+(100*1.08*$nights));
+ 
