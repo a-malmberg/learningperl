@@ -16,3 +16,41 @@
 #13.	Display the minimum integer
 #14.	Display the array in reverse sorted order (largest to smallest) See the sort() and reverse() functions 
 #15.	Display the gcd of the largest and smallest integers  (See the lesson for an example ) using python’s gcd function
+
+use warnings;
+use strict;
+use 5.010;
+use List::Util qw(min max sum);
+
+#my @rand = map { (-100+ int(1+rand(200))) } ( 1..25 );
+
+#my $a =-100+ int(1+rand(200));
+
+my $i = 25;
+my $x;
+my @rand;
+
+while ($i >0) {
+	$x =-100+ int(1+rand(200));
+	push(@rand, $x);
+	$i--;
+	}
+say "2a) Values in the array: @rand";
+say "2b) Size of the array: " . scalar @rand;
+
+my $average = (sum(@rand)/25);
+say "3) Average value of array: $average";
+
+my $even = 0;
+my $odd = 0;
+for (@rand) {
+	if ($_ %2 == 0){
+		$even++;
+	} else {
+		$odd++;
+	}
+}
+
+say "4) Numer of even integers: $even";
+say "5) Number of odd integers: $odd";
+

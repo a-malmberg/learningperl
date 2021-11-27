@@ -38,3 +38,33 @@
 #240			16
 #420			14
 #600			20
+
+use warnings;
+use strict;
+use 5.010;
+use POSIX qw/ceil/;
+
+say "Enter time (in minutes): ";
+my $minutes = <STDIN>;
+my $fee;
+my $fee1 = 5;
+my $fee2 = 20;
+my $hour;
+
+if ($minutes <= 60) {
+	$fee = 5;
+} elsif ($minutes <= 300) {
+		#if ($minutes == 300) {
+		#	$fee = 20;
+		#}else{
+			$hour = ceil ($minutes/60);
+			$fee = $hour*4;
+			#}
+		
+} else {
+	$hour = ceil ($minutes/60);
+	$fee = $hour*2;
+	}
+say "You owe $fee in parking fees";
+			
+	
