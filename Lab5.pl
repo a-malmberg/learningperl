@@ -22,10 +22,6 @@ use strict;
 use 5.010;
 use List::Util qw(min max sum);
 
-#my @rand = map { (-100+ int(1+rand(200))) } ( 1..25 );
-
-#my $a =-100+ int(1+rand(200));
-
 my $i = 25;
 my $x;
 my @rand;
@@ -54,3 +50,58 @@ for (@rand) {
 say "4) Numer of even integers: $even";
 say "5) Number of odd integers: $odd";
 
+my $pos = 0;
+my $neg = 0;
+for (@rand) {
+	if ($_  > 0){
+		$pos++;
+	} else {
+		$neg++;
+	}
+}
+say "6) Number of positive integers: $pos";
+say "7) Number of negative integers: $neg";
+
+my @sorted = sort @rand;
+say "Sorted values: @sorted";
+say "8) The median is: $sorted[int (scalar @sorted / 2)]";
+
+my @arr1 = splice(@sorted, int scalar @sorted / 2);
+say "9) Integers >= median: @arr1"; 
+say "10) Integers < median: @sorted";
+
+say "Enter an integer: ";
+my $num = <STDIN>;
+chomp $num;
+my $y = 0;
+
+
+for (@rand) {
+	if ($_  == $num){
+		$y++;
+	}
+}
+say "11) The number $num is present $y times in the array.";
+say "12) The maximum integer in the array is: " . max(@rand);
+say "13) The minimum integer in the array is: " . min(@rand);
+
+my @new_sorted = sort @rand;
+my @reversed = reverse @new_sorted;
+
+say "14) The reversed sorted array is: @reversed";
+
+my $a = max(@rand);
+my $b = min(@rand);
+
+# Euclid code I found on perlmonks.org
+sub gcd {
+  my ($a, $b) = @_;
+  ($a,$b) = ($b,$a) if $a > $b;
+  while ($a) {
+    ($a, $b) = ($b % $a, $a);
+  }
+  return $b;
+}
+
+my $gcd_min_max = gcd ($a, $b);
+say "15) The GCD using the minimum and maximum numbers is: $gcd_min_max";
