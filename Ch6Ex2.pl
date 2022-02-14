@@ -5,7 +5,15 @@ use v5.14;
 use utf8;
 
 say 'Enter words, then hit Ctrl-D';
-chomp(my @values = <STDIN>);
+chomp(my @words = <STDIN>);
+my %count;
+my $word;
 
-# this is not done
 
+foreach $word (@words) {
+    $count{$word} +=1;     
+}
+
+foreach $word (sort keys %count) {
+    say "$word was seen $count{$word} times.";
+}
