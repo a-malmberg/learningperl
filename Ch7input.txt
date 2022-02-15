@@ -1,0 +1,12 @@
+This is a file with input about fred flintstone and his friends, wilma, barney and dino
+This line mentions fred
+Another line that only mentions Fred
+Is fredrika his girlfriend?
+FRED
+flintstone, fred.
+Alfred and wilma
+Mr. Slate
+Bamm-Bamm
+llama
+fred wilma
+wilma fred
