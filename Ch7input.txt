@@ -10,3 +10,6 @@ Bamm-Bamm
 llama
 fred wilma
 wilma fred
+wilma
+Mrs. Wilma Flintstone
+wilma&fred
