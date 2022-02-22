@@ -20,6 +20,10 @@ use utf8;
 # both prototypes and attributes are optional
 # block is where you put the code
 
+# multiple subroutines in Perl can be created by using the keyword "multi", this helps in creating multiple subroutines iwth the same name
+# ex. multi Func1($var){statement};
+#     multi Func1($var1, $var2){statement1; statement2;}
+
 sub say_something {                             # create the "say_something" subroutine
     say "Hi, this is the first subroutine";
 }
@@ -197,12 +201,12 @@ my $monthr = \%months;       # to dereference a Hash you use %$monthr, since an 
 
 say "";
 say 'This is a HASH reference';
-for(keys %$monthr) {                #access all the Hash elements via the reference and display them using the keys to iterate through the Hash
+for(keys %{$monthr}) {                #access all the Hash elements via the reference and display them using the keys to iterate through the Hash
     say ("$_ = $monthr->{$_}");
 }
 
 say "Foreach output:";
-foreach my $key (keys %$monthr) {            # loop through all elements from reference
+foreach my $key (keys %{$monthr}) {            # loop through all elements from reference
     my $value = $months{$key};
     say "$key is key, $value is value";
 }
@@ -219,10 +223,21 @@ while (($key_new, $value_new) = each (%months)){
 
 # create a sub routine that uses a return value that is still a Hash
 
-sub return_hash_ref {
-    my %hash;
-    for (0..shift) {
-        $hash{$_} = $_;
+my $hash_testr = return_hash_ref(\%months);       # calling the method using the Hash reference
+
+say "Hash test values are:";
+
+for(keys %{$hash_testr}) {                
+    say ("$_ has the value $hash_testr->{$_}");
+}
+
+sub return_hash_ref {                             # method receives reference
+    my $firstArg = $_[0];                         # access the first array element, but leaves @_unchanged
+    for(keys %{$_[0]}){                           
+      if ($_ eq "Feb") {
+        return { $_ => $months{$_}};
+      }
+      
     }
-    return \%hash;
+
 }
